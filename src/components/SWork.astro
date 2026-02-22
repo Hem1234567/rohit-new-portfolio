@@ -8,50 +8,14 @@ const videos = await Astro.glob<{ default: any }>('/src/assets/works/*.mp4')
 // But it’s my site, and editing it in code is faster than setting up yet another headless something.
 // Sometimes "quick and dirty" wins. Don’t @ me.
 const info = {
-  Pen: {
-    title: 'CodePen',
-    site: 'https://codepen.io/wodniack',
+  Iconic2025: {
+    title: 'The Role of Prototyping in Design Thinking - IConIC 2025',
+    site: '#',
   },
-  Dummy1: {
-    title: 'Dummy Project 1',
-    site: 'https://wodniack.dev',
+  ICCDS2025: {
+    title: 'Enhancing Network Security with Deep Learning - ICCDS-2025',
+    site: '#',
   },
-  Dummy2: {
-    title: 'Dummy Project 2',
-    site: 'https://wodniack.dev',
-  },
-  Dummy3: {
-    title: 'Dummy Project 3',
-    site: 'https://wodniack.dev',
-  },
-  Dummy4: {
-    title: 'Dummy Project 4',
-    site: 'https://wodniack.dev',
-  },
-  Dummy5: {
-    title: 'Dummy Project 5',
-    site: 'https://wodniack.dev',
-  },
-  Dummy6: {
-    title: 'Dummy Project 6',
-    site: 'https://wodniack.dev',
-  },
-  Dummy7: {
-    title: 'Dummy Project 7',
-    site: 'https://wodniack.dev',
-  },
-  Dummy8: {
-    title: 'Dummy Project 8',
-    site: 'https://wodniack.dev',
-  },
-  Dummy9: {
-    title: 'Dummy Project 9',
-    site: 'https://wodniack.dev',
-  },
-  Dummy10: {
-    title: 'Dummy Project 10',
-    site: 'https://wodniack.dev',
-  }
 }
 
 let projects = []
@@ -83,19 +47,17 @@ videos.forEach((video, index) => {
   }
 })
 
-// Create dummy projects with 3 videos each
-for (let i = 1; i <= 14; i++) {
-  const key = `Dummy${i}`
+// Create projects with the two publications
+const keys = ['Iconic2025', 'ICCDS2025']
+for (let i = 0; i < 20; i++) {
+  const key = keys[i % keys.length]
   const project = info[key]
-  if (!project) continue
 
-  for (let j = 0; j < 4; j++) {
-    projects.push({
-      caption: `${project.title} - Video ${j + 1}`,
-      site: project.site,
-      src: dummyVideo
-    })
-  }
+  projects.push({
+    caption: project.title,
+    site: project.site,
+    src: dummyVideo
+  })
 }
 
 function shuffle(array) {
