@@ -18,45 +18,48 @@ const info = {
   },
 }
 
+const projectImages = [
+  {
+    title: 'Visual Identity Design - 8',
+    src: '/images/projects/8.png',
+  },
+  {
+    title: 'College Event Flyer',
+    src: '/images/projects/College Flyer 03.png',
+  },
+  {
+    title: 'School Branding Poster',
+    src: '/images/projects/SCHOOL POSTER  01.png',
+  },
+  {
+    title: 'Meta Advertising Graphic',
+    src: '/images/projects/meta ads.png',
+  },
+]
+
 let projects = []
 let pens = []
 
-// I removed the video loops to keep the repo lightweight.
-// But this is where I normally fetch and assign the videos for each project in the portfolio.
-videos.forEach((video, index) => {
-  const src = video.default
-
-  const key = src.split('-')[0].split('/').pop()
-  const project = info[key]
-  if (!project) return
-  const caption = project.title
-  const site = project.site
-
-  if (key === 'Pen') {
-    pens.push({
-      caption,
-      site,
-      src,
-    })
-  } else {
-    projects.push({
-      caption,
-      site,
-      src,
-    })
-  }
+// Add the 4 new project images
+projectImages.forEach((img) => {
+  projects.push({
+    caption: img.title,
+    site: '#',
+    src: img.src,
+  })
 })
 
-// Create projects with the two publications
+// Add the publications with some images too
 const keys = ['Iconic2025', 'ICCDS2025']
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < 16; i++) {
   const key = keys[i % keys.length]
   const project = info[key]
+  const img = projectImages[i % projectImages.length]
 
   projects.push({
     caption: project.title,
     site: project.site,
-    src: dummyVideo
+    src: img.src,
   })
 }
 
